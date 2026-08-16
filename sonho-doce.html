@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonho Doce · Bolos e Docinhos Gourmet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&family=Big+Shoulders+Text:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --cream-dim:#FBEEDD;
+    --choc:#3B2415;
+    --choc-soft:#5E4531;
+    --pink:#D46B85;
+    --pink-dark:#B14F69;
+    --gold:#C79A3F;
+    --line: rgba(59,36,21,0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--cream); color:var(--choc); font-family:'Manrope', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:-0.005em; }
+  .eyebrow{ font-family:'Big Shoulders Text', sans-serif; text-transform:uppercase; letter-spacing:0.16em; font-size:0.74rem; color:var(--pink-dark); font-weight:700; }
+  :focus-visible{ outline:2.5px solid var(--pink); outline-offset:3px; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 26px; }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(255,248,239,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:15px 26px; max-width:1080px; margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Cormorant Garamond', serif; font-weight:700; font-size:1.5rem; }
+  .brand .stamp{ width:36px; height:36px; border-radius:50%; background:var(--pink); color:var(--cream); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Text', sans-serif; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+  nav ul{ list-style:none; display:flex; gap:24px; font-size:0.88rem; font-weight:600; }
+  nav ul a{ text-decoration:none; }
+  nav ul a:hover{ color:var(--pink-dark); }
+  @media (max-width:700px){ nav ul{ display:none; } }
+
+  .hero{ padding:56px 0 44px; text-align:center; }
+  .hero .eyebrow{ display:block; margin-bottom:10px; }
+  .status-row{ display:flex; align-items:center; justify-content:center; gap:10px; font-family:'Big Shoulders Text', sans-serif; font-size:0.85rem; letter-spacing:0.04em; margin-bottom:14px; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:#3F8F4F; box-shadow:0 0 0 3px rgba(63,143,79,0.18); animation:pulse 2.4s ease-in-out infinite; flex-shrink:0; }
+  .dot.closed{ background:#B5442E; box-shadow:0 0 0 3px rgba(181,68,46,0.18); }
+  @keyframes pulse{ 0%,100%{ box-shadow:0 0 0 3px rgba(63,143,79,0.18);} 50%{ box-shadow:0 0 0 6px rgba(63,143,79,0.1);} }
+  .hero h1{ font-size:clamp(2.6rem, 7vw, 4rem); line-height:1.05; margin-bottom:16px; }
+  .hero h1 em{ font-style:italic; color:var(--pink-dark); }
+  .hero p{ max-width:52ch; margin:0 auto 26px; color:var(--choc-soft); font-size:1.06rem; }
+  .hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn{ font-family:'Manrope', sans-serif; font-weight:700; font-size:0.9rem; padding:13px 24px; border-radius:100px; border:1.5px solid var(--choc); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:transform 0.18s ease, background 0.18s ease, color 0.18s ease; }
+  .btn-primary{ background:var(--pink); border-color:var(--pink); color:var(--cream); }
+  .btn-primary:hover{ transform:translateY(-2px); background:var(--pink-dark); }
+  .btn-ghost:hover{ transform:translateY(-2px); background:var(--choc); color:var(--cream); }
+  .btn-whatsapp{ background:#25D366; border-color:#25D366; color:#0B3B1E; }
+  .btn-whatsapp:hover{ transform:translateY(-2px); background:#1FB958; }
+  .btn-whatsapp svg{ width:16px; height:16px; }
+
+  section{ padding:56px 0; }
+  .section-head{ text-align:center; margin-bottom:36px; }
+  .section-head h2{ font-size:2.1rem; margin-top:8px; }
+  .section-head p{ color:var(--choc-soft); max-width:60ch; margin:10px auto 0; font-size:0.98rem; }
+
+  /* ---------- docinhos grid ---------- */
+  .doce-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  @media (max-width:760px){ .doce-grid{ grid-template-columns:1fr; } }
+  @media (min-width:761px) and (max-width:980px){ .doce-grid{ grid-template-columns:repeat(2, 1fr); } }
+  .doce-card{ background:var(--choc); color:var(--cream); border-radius:14px; padding:22px; }
+  .doce-card .name{ font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; margin-bottom:6px; color:var(--gold); }
+  .doce-card .desc{ font-size:0.86rem; color:rgba(255,248,239,0.82); margin-bottom:14px; line-height:1.5; }
+  .doce-card .prices{ list-style:none; border-top:1px dashed rgba(255,248,239,0.25); padding-top:10px; }
+  .doce-card .prices li{ display:flex; justify-content:space-between; font-size:0.86rem; padding:3px 0; }
+  .doce-card .prices li b{ font-family:'Big Shoulders Text', sans-serif; color:var(--gold); font-weight:700; }
+
+  /* ---------- bolo tamanhos ---------- */
+  .tamanhos{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-bottom:44px; }
+  @media (max-width:760px){ .tamanhos{ grid-template-columns:repeat(2, 1fr); } }
+  .tam-card{ background:var(--cream-dim); border:1px solid var(--line); border-radius:14px; padding:22px; text-align:center; }
+  .tam-card .tam-name{ font-family:'Cormorant Garamond', serif; font-size:1.5rem; font-weight:700; margin-bottom:4px; }
+  .tam-card .tam-rende{ font-size:0.8rem; color:var(--choc-soft); margin-bottom:14px; }
+  .tam-card .tam-price{ font-size:0.88rem; }
+  .tam-card .tam-price b{ font-family:'Big Shoulders Text', sans-serif; color:var(--pink-dark); font-weight:700; }
+
+  .andar-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-bottom:44px; }
+  @media (max-width:700px){ .andar-grid{ grid-template-columns:1fr; } }
+  .andar-card{ background:var(--choc); color:var(--cream); border-radius:14px; padding:24px; }
+  .andar-card .tam-name{ font-family:'Cormorant Garamond', serif; font-size:1.4rem; font-weight:700; color:var(--gold); margin-bottom:6px; }
+  .andar-card p{ font-size:0.9rem; color:rgba(255,248,239,0.85); }
+
+  /* ---------- sabores tabs ---------- */
+  .tabs{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:26px; }
+  .tab-btn{ font-family:'Manrope', sans-serif; font-weight:700; font-size:0.85rem; padding:10px 18px; border-radius:100px; border:1.5px solid var(--line); background:transparent; cursor:pointer; color:var(--choc-soft); transition:all 0.2s ease; }
+  .tab-btn.active{ background:var(--pink); border-color:var(--pink); color:var(--cream); }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+  .sabor-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  @media (max-width:700px){ .sabor-grid{ grid-template-columns:1fr; } }
+  .sabor-item{ background:var(--cream); padding:18px 22px; }
+  .sabor-item .name{ font-weight:700; font-size:0.98rem; margin-bottom:4px; display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
+  .sabor-item .sabor-price{ font-family:'Big Shoulders Text', sans-serif; font-weight:700; font-size:0.8rem; color:var(--pink-dark); white-space:nowrap; }
+  .sabor-item .desc{ font-size:0.84rem; color:var(--choc-soft); line-height:1.5; }
+
+  /* ---------- outras sobremesas ---------- */
+  .outros-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; }
+  @media (max-width:980px){ .outros-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){ .outros-grid{ grid-template-columns:1fr; } }
+  .outro-card{ background:var(--cream-dim); border:1px solid var(--line); border-radius:14px; padding:26px; }
+  .outro-card .name{ font-family:'Cormorant Garamond', serif; font-size:1.5rem; font-weight:700; margin-bottom:8px; }
+  .outro-card .desc{ font-size:0.9rem; color:var(--choc-soft); margin-bottom:14px; line-height:1.55; }
+  .outro-card .price-tag{ display:inline-block; background:var(--pink); color:var(--cream); font-family:'Big Shoulders Text', sans-serif; font-weight:700; font-size:0.85rem; padding:6px 14px; border-radius:100px; }
+  .outro-card .price-list{ list-style:none; font-size:0.85rem; margin-bottom:12px; }
+  .outro-card .price-list li{ display:flex; justify-content:space-between; padding:4px 0; border-top:1px dashed var(--line); }
+  .outro-card .price-list li:first-child{ border-top:none; }
+  .outro-card .price-list b{ color:var(--pink-dark); font-family:'Big Shoulders Text', sans-serif; }
+
+  /* ---------- instruções ---------- */
+  .instrucoes{ background:var(--choc); color:var(--cream); }
+  .instrucoes .eyebrow{ color:var(--gold); }
+  .instrucoes .section-head h2{ color:var(--cream); }
+  .instrucoes .section-head p{ color:rgba(255,248,239,0.75); }
+  .instr-list{ list-style:none; max-width:60ch; margin:0 auto; display:grid; gap:14px; }
+  .instr-list li{ display:flex; gap:14px; align-items:flex-start; font-size:0.96rem; line-height:1.55; color:rgba(255,248,239,0.92); }
+  .instr-num{ flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--pink); color:var(--cream); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Text', sans-serif; font-weight:700; font-size:0.85rem; }
+
+  /* ---------- contato ---------- */
+  .contato{ text-align:center; }
+  .contato .payment{ margin-top:8px; color:var(--choc-soft); font-size:0.92rem; }
+  .contato .phone{ font-family:'Cormorant Garamond', serif; font-size:2rem; font-weight:700; color:var(--pink-dark); margin:14px 0 22px; }
+  .contato-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin:40px 0; text-align:left; }
+  @media (max-width:760px){ .contato-grid{ grid-template-columns:1fr; } }
+  .contato-card{ background:var(--cream-dim); border:1px solid var(--line); border-radius:14px; padding:20px 22px; }
+  .cc-title{ font-family:'Big Shoulders Text', sans-serif; font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--pink-dark); margin-bottom:8px; }
+  .cc-body{ font-size:0.92rem; color:var(--choc-soft); line-height:1.6; }
+  .cc-body a{ color:var(--pink-dark); font-weight:600; text-decoration:none; }
+  .cc-body a:hover{ text-decoration:underline; }
+  .hours-card{ background:var(--choc); color:var(--cream); border-radius:16px; padding:28px 30px; text-align:left; max-width:420px; margin:0 auto; }
+  .hours-card .cc-title{ color:var(--gold); }
+  .hours-list{ list-style:none; }
+  .hours-list li{ display:flex; justify-content:space-between; padding:7px 0; border-top:1px dashed rgba(255,248,239,0.2); font-size:0.92rem; }
+  .hours-list li:first-child{ border-top:none; }
+  .hours-list li span:last-child{ font-family:'Big Shoulders Text', sans-serif; font-weight:600; }
+  .hours-list li.today span:last-child{ color:var(--gold); }
+  .hours-list li.closed-today span:last-child{ color:#E39A88; }
+
+  footer{ border-top:1px solid var(--line); padding:26px 0; text-align:center; font-size:0.82rem; color:var(--choc-soft); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="stamp">SD</span>Sonho Doce</div>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#docinhos">Docinhos</a></li>
+        <li><a href="#bolos">Bolos</a></li>
+        <li><a href="#outros">Outras delícias</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Bolos e sobremesas</span>
+      <div class="status-row">
+        <span class="dot" id="statusDot" aria-hidden="true"></span>
+        <span id="statusText">ABERTA AGORA · 09:00–12:00</span>
+      </div>
+      <h1>Doces finos feitos<br>com <em>amor e carinho</em>.</h1>
+      <p>Sonho Doce — docinhos gourmet, bolos artesanais e sobremesas para festas, casamentos e o dia a dia. Tudo feito na medida do seu evento.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#docinhos">Ver cardápio</a>
+        <a class="btn btn-whatsapp" href="https://wa.me/551932211277" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.1 1 1-3-.2-.3C3.7 15 3.2 13.5 3.2 12c0-4.8 3.9-8.8 8.8-8.8s8.8 3.9 8.8 8.8-3.9 8.8-8.8 8.8z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="docinhos">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <span class="eyebrow">Docinhos finos</span>
+        <h2>Docinhos gourmet</h2>
+        <p>Preços por caixa — 30, 50 ou 100 unidades, conforme disponibilidade do docinho.</p>
+      </div>
+      <div class="doce-grid">
+        <div class="doce-card">
+          <div class="name">Mini trufa Camafeu</div>
+          <div class="desc">Bombom de chocolate branco, recheado com brigadeiro de nozes.</div>
+          <ul class="prices"><li>30 un <b>R$ 115</b></li><li>50 un <b>R$ 185</b></li><li>100 un <b>R$ 380</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Mini trufa Roseta</div>
+          <div class="desc">Bombom de chocolate branco. Recheios: Prestígio, Ninho, Limão ou Maracujá.</div>
+          <ul class="prices"><li>30 un <b>R$ 105</b></li><li>50 un <b>R$ 165</b></li><li>100 un <b>R$ 320</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Gota de Morango</div>
+          <div class="desc">Chocolate branco, recheado com trufado de chocolate branco e morango.</div>
+          <ul class="prices"><li>30 un <b>R$ 125</b></li><li>50 un <b>R$ 205</b></li><li>100 un <b>R$ 410</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Gota de Cereja</div>
+          <div class="desc">Chocolate branco, recheado com trufado de chocolate branco e cereja.</div>
+          <ul class="prices"><li>30 un <b>R$ 125</b></li><li>50 un <b>R$ 205</b></li><li>100 un <b>R$ 410</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Mini trufa Chocolate ao leite</div>
+          <div class="desc">Recheios: Chocolate, Prestígio, Ninho, Limão ou Maracujá.</div>
+          <ul class="prices"><li>30 un <b>R$ 95</b></li><li>50 un <b>R$ 150</b></li><li>100 un <b>R$ 290</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Mini trufa Chocolate branco</div>
+          <div class="desc">Recheios: Chocolate, Prestígio, Ninho, Limão ou Maracujá.</div>
+          <ul class="prices"><li>30 un <b>R$ 105</b></li><li>50 un <b>R$ 165</b></li><li>100 un <b>R$ 320</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Coração de Maracujá</div>
+          <div class="desc">Chocolate branco ou ao leite, recheado com mousse de maracujá e calda da fruta.</div>
+          <ul class="prices"><li>50 un <b>R$ 150</b></li><li>100 un <b>R$ 290</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Copinho de Uva</div>
+          <div class="desc">Chocolate branco ou ao leite, trufado de chocolate branco e uva verde.</div>
+          <ul class="prices"><li>50 un <b>R$ 135</b></li><li>100 un <b>R$ 250</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Raffaello</div>
+          <div class="desc">Trufa de chocolate branco, recheado com cocada cremosa.</div>
+          <ul class="prices"><li>50 un <b>R$ 100</b></li><li>100 un <b>R$ 200</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Brigadeiro com Nutella</div>
+          <div class="desc">Brigadeiro de chocolate ao leite, coberto com split de chocolate ao leite e pitanga de Nutella.</div>
+          <ul class="prices"><li>50 un <b>R$ 85</b></li><li>100 un <b>R$ 170</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Brigadeiro Gourmet</div>
+          <div class="desc">Brigadeiro de chocolate ao leite, coberto com split de chocolate ao leite.</div>
+          <ul class="prices"><li>50 un <b>R$ 65</b></li><li>100 un <b>R$ 120</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Brigadeiro Ferrero</div>
+          <div class="desc">Brigadeiro de chocolate ao leite, coberto com xerém de amendoim e decorado com Nutella.</div>
+          <ul class="prices"><li>50 un <b>R$ 85</b></li><li>100 un <b>R$ 170</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Brigadeiro de Ninho com Nutella</div>
+          <div class="desc">Brigadeiro de leite Ninho com pitanga de Nutella.</div>
+          <ul class="prices"><li>50 un <b>R$ 85</b></li><li>100 un <b>R$ 170</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Bicho de Pé</div>
+          <div class="desc">Brigadeiro de morango, coberto com leite em pó.</div>
+          <ul class="prices"><li>50 un <b>R$ 75</b></li><li>100 un <b>R$ 150</b></li></ul>
+        </div>
+        <div class="doce-card">
+          <div class="name">Beijinho</div>
+          <div class="desc">Beijinho cremoso, coberto com coco fresco.</div>
+          <ul class="prices"><li>50 un <b>R$ 65</b></li><li>100 un <b>R$ 120</b></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bolos" style="background:var(--cream-dim);">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <span class="eyebrow">Bolos</span>
+        <h2>Bolo redondo</h2>
+        <p>Nas versões tradicional e premium, do PP ao G.</p>
+      </div>
+      <div class="tamanhos">
+        <div class="tam-card">
+          <div class="tam-name">PP</div>
+          <div class="tam-rende">Rende até 10 fatias</div>
+          <div class="tam-price">Tradicional <b>R$ 90</b></div>
+          <div class="tam-price">Premium <b>R$ 110</b></div>
+        </div>
+        <div class="tam-card">
+          <div class="tam-name">P</div>
+          <div class="tam-rende">Rende de 13 a 15 fatias</div>
+          <div class="tam-price">Tradicional <b>R$ 130</b></div>
+          <div class="tam-price">Premium <b>R$ 145</b></div>
+        </div>
+        <div class="tam-card">
+          <div class="tam-name">M</div>
+          <div class="tam-rende">Rende de 20 a 22 fatias</div>
+          <div class="tam-price">Tradicional <b>R$ 160</b></div>
+          <div class="tam-price">Premium <b>R$ 180</b></div>
+        </div>
+        <div class="tam-card">
+          <div class="tam-name">G</div>
+          <div class="tam-rende">Rende de 30 a 35 fatias</div>
+          <div class="tam-price">Tradicional <b>R$ 240</b></div>
+          <div class="tam-price">Premium <b>R$ 270</b></div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <span class="eyebrow">Para grandes ocasiões</span>
+        <h2>Bolo de andar</h2>
+      </div>
+      <div class="andar-grid">
+        <div class="andar-card">
+          <div class="tam-name">Tamanho P</div>
+          <p>Topo de 10 fatias + base de 20 fatias — <b style="color:var(--gold)">R$ 270</b> para 30 fatias.</p>
+        </div>
+        <div class="andar-card">
+          <div class="tam-name">Tamanho G</div>
+          <p>Topo de 15 fatias + base de 30 fatias — <b style="color:var(--gold)">R$ 400</b> para 45 fatias.</p>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <span class="eyebrow">Sabores · valor por quilo</span>
+        <h2>Escolha o seu</h2>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="branca">Massa branca</button>
+        <button class="tab-btn" data-tab="chocolate">Massa de chocolate</button>
+        <button class="tab-btn" data-tab="morango">Com morango</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-branca">
+        <div class="sabor-grid">
+          <div class="sabor-item"><div class="name">Trufas Brancas c/ Abacaxi <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e mousse de abacaxi em pedaços. Coberto com mousse de abacaxi, raspas de chocolate branco e abacaxi.</div></div>
+          <div class="sabor-item"><div class="name">Olho de Sogra <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com doce de leite com ameixa e cocada cremosa. Coberto com mousse branco, coco ralado e ameixa.</div></div>
+          <div class="sabor-item"><div class="name">Abacaxi com Coco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com mousse de abacaxi em pedaços e cocada cremosa. Coberto com mousse de abacaxi, coco ralado e cerejas.</div></div>
+          <div class="sabor-item"><div class="name">Bolo Trufado <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e trufado de chocolate branco. Coberto com mousse branco e raspas de chocolate.</div></div>
+          <div class="sabor-item"><div class="name">Abacaxi com Ameixas <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com doce de leite com ameixas e mousse de abacaxi em pedaços. Cobertura de mousse de abacaxi e ameixas.</div></div>
+          <div class="sabor-item"><div class="name">Ameixa <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com doce de leite com ameixa e mousse branco. Coberto com mousse branco, doce de leite e ameixa.</div></div>
+          <div class="sabor-item"><div class="name">Delícia de Abacaxi <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com doce de leite com abacaxi em pedaços e cocada cremosa. Coberto com mousse de abacaxi, doce de leite e coco ralado.</div></div>
+          <div class="sabor-item"><div class="name">Prestígio Branco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e cocada cremosa. Coberto com mousse branco, raspas de chocolate branco e coco ralado.</div></div>
+          <div class="sabor-item"><div class="name">Torta de Limão <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e mousse de limão. Coberto com mousse de limão, raspas de chocolate branco, limão e cerejas.</div></div>
+          <div class="sabor-item"><div class="name">Ninho Branco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e mousse de ninho. Coberto com mousse de ninho, raspas de chocolate branco e ninho.</div></div>
+          <div class="sabor-item"><div class="name">Cocada com Maracujá <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com cocada cremosa e mousse de Maracujá. Coberto com mousse de Maracujá, coco ralado e cerejas.</div></div>
+          <div class="sabor-item"><div class="name">Bombom Branco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e mousse branco com bombom. Coberto com mousse branco, raspas de chocolate branco e bombom.</div></div>
+          <div class="sabor-item"><div class="name">Maracujá Branco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufas brancas e mousse de Maracujá. Coberto com mousse de Maracujá, raspas de chocolate branco e calda de Maracujá.</div></div>
+          <div class="sabor-item"><div class="name">Paçoquinha <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com doce de leite cremoso e mousse branco com paçoquinha. Coberto com doce de leite e paçoquinha.</div></div>
+          <div class="sabor-item"><div class="name">Floresta Branca <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com trufado branco e mousse branco com cereja. Coberto com mousse branco, raspas de chocolate branco e cereja.</div></div>
+          <div class="sabor-item"><div class="name">Trufas Brancas com Nozes <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com trufas brancas e mousse branco com nozes. Coberto com mousse branco, raspas de chocolate branco e nozes.</div></div>
+          <div class="sabor-item"><div class="name">Doce de Leite com Nozes <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com doce de leite com nozes e mousse branco com nozes. Coberto com mousse branco, doce de leite e nozes.</div></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-chocolate">
+        <div class="sabor-grid">
+          <div class="sabor-item"><div class="name">Ninho Trufado <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse de leite em pó. Coberto com mousse de leite em pó e raspas de chocolate ao leite.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate com Maracujá <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse de Maracujá. Coberto com mousse de Maracujá, raspas de chocolate e calda de Maracujá.</div></div>
+          <div class="sabor-item"><div class="name">Delícia de Chocolate <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse de chocolate. Coberto com mousse de chocolate e raspas.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate com Paçoquinha <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse branco com paçoquinha. Coberto com mousse branco, raspas de chocolate e paçoquinha.</div></div>
+          <div class="sabor-item"><div class="name">Doce Suspiro <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse branco. Coberto com mousse branco e suspiros.</div></div>
+          <div class="sabor-item"><div class="name">Prestígio Trufado <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e cocada cremosa. Coberto com mousse branco, raspas de chocolate ao leite e coco ralado.</div></div>
+          <div class="sabor-item"><div class="name">Trufado Preto e Branco <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e trufado de chocolate branco. Coberto com mousse branco e raspas.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate com Danone <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse de Danone de morango. Coberto com mousse Danone de morango e raspas de chocolate.</div></div>
+          <div class="sabor-item"><div class="name">Bombom Trufado <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite, mousse branco e bombom. Coberto com mousse branco, raspas de chocolate ao leite e bombom.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate com Limão <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse de limão. Coberto com mousse de limão e raspas de chocolate.</div></div>
+          <div class="sabor-item"><div class="name">Brigadeiro <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com brigadeiro e mousse de chocolate ao leite. Coberto com mousse de chocolate ao leite, raspas e granulado de chocolate.</div></div>
+          <div class="sabor-item"><div class="name">Delícia de Leite <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com mousse de chocolate ao leite e doce de leite. Coberto com mousse de chocolate ao leite, raspas e doce de leite.</div></div>
+          <div class="sabor-item"><div class="name">Brigadeiro com Ninho <span class="sabor-price">R$ 80/kg</span></div><div class="desc">Recheado com brigadeiro e mousse de leite em pó. Coberto com mousse de leite em pó, raspas e granulado de chocolate.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate Meio Amargo <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com trufado de chocolate meio amargo e mousse de chocolate ao leite. Coberto com mousse de chocolate, ganache meio amargo e raspas.</div></div>
+          <div class="sabor-item"><div class="name">Floresta Negra <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite e mousse branco com cereja. Coberto com mousse branco, raspas de chocolate e cereja.</div></div>
+          <div class="sabor-item"><div class="name">Tiramisù <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Recheado com trufado de chocolate ao leite com café e mousse branco. Coberto com mousse branco, ganache de café e raspas.</div></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-morango">
+        <div class="sabor-grid">
+          <div class="sabor-item"><div class="name">Morango Silvestre <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa branca, recheado com doce de leite com morangos e mousse branco com morangos. Coberto com mousse branco, doce de leite e morangos.</div></div>
+          <div class="sabor-item"><div class="name">Morango do Nordeste Branco <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Massa branca, recheado com trufado de chocolate ao leite, leite condensado cremoso e morango. Coberto com mousse branco, leite condensado e morango.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate c/ Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa de chocolate, recheado com trufado de chocolate ao leite e mousse de chocolate com morango. Coberto com mousse de chocolate, raspas e morango.</div></div>
+          <div class="sabor-item"><div class="name">Morango do Nordeste <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Massa de chocolate, recheado com trufado de chocolate ao leite, leite condensado cremoso e morango. Coberto com mousse de chocolate, leite condensado e morango.</div></div>
+          <div class="sabor-item"><div class="name">Trufado Preto e Branco com Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa de chocolate, recheado com trufado de chocolate ao leite, trufado de chocolate branco e morango. Coberto com mousse de chocolate, raspas preto e branco e morango.</div></div>
+          <div class="sabor-item"><div class="name">Doce Encontro <span class="sabor-price">R$ 95/kg</span></div><div class="desc">Massa branca e chocolate, recheado com trufado de chocolate branco, morangos e trufado de chocolate ao leite. Coberto com mousse branco, ganache e morangos inteiros.</div></div>
+          <div class="sabor-item"><div class="name">Doce Suspiro de Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa branca, recheio de trufas brancas e mousse branca com morangos. Cobertura de mousse branco, suspiros, calda de morango e morangos.</div></div>
+          <div class="sabor-item"><div class="name">Delícia de Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa branca, recheado com cocada cremosa e doce de leite com morango. Coberto com mousse branco, doce de leite, coco ralado e morango.</div></div>
+          <div class="sabor-item"><div class="name">Ninho Branco c/ Morangos <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa branca, recheado com trufas brancas, mousse de leite em pó e morangos. Coberto com mousse de leite em pó, raspas e morangos.</div></div>
+          <div class="sabor-item"><div class="name">Chocolate, Coco e Morangos <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa de chocolate, recheado com cocada cremosa, mousse de chocolate e morangos. Coberto com mousse de chocolate, raspas, coco ralado e morango.</div></div>
+          <div class="sabor-item"><div class="name">Ninho Trufado com Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa de chocolate, recheado com trufado de chocolate ao leite e mousse de leite em pó com morangos. Coberto com mousse de leite em pó, raspas e morango.</div></div>
+          <div class="sabor-item"><div class="name">Morango com Nutella <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Massa de chocolate, recheado com trufado de chocolate ao leite, Nutella e morango. Coberto com mousse de chocolate, raspas e morango.</div></div>
+          <div class="sabor-item"><div class="name">Bombom Branco c/ Morango <span class="sabor-price">R$ 85/kg</span></div><div class="desc">Massa branca, recheado com trufas brancas e mousse branco com bombom. Coberto com mousse branco, raspas e bombom.</div></div>
+          <div class="sabor-item"><div class="name">Ninho com Nutella e Morango <span class="sabor-price">R$ 90/kg</span></div><div class="desc">Massa de chocolate, recheado com Nutella e mousse de leite em pó com morangos. Coberto com mousse de leite em pó, raspas e morango.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="outros">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <span class="eyebrow">Outras delícias</span>
+        <h2>Mais opções da casa</h2>
+      </div>
+      <div class="outros-grid">
+        <div class="outro-card">
+          <div class="name">Bento Cake</div>
+          <div class="desc">Serve 3 pessoas, com média de 500g. Personalizável com frase, desenho ou foto — sabores tradicionais do cardápio ou especiais.</div>
+          <span class="price-tag">Trad. R$ 45 · Especial R$ 55</span>
+        </div>
+        <div class="outro-card">
+          <div class="name">Bolo Pudim</div>
+          <div class="desc">Camadas de bolo com mini pudins individuais por cima. Encomendas com no mínimo 5 dias de antecedência.</div>
+          <ul class="price-list">
+            <li>Tamanho P · 2 mini pudins <b>R$ 110</b></li>
+            <li>Tamanho M · 4 mini pudins <b>R$ 210</b></li>
+            <li>Tamanho G · 6 mini pudins <b>R$ 290</b></li>
+          </ul>
+        </div>
+        <div class="outro-card">
+          <div class="name">Pudim Sonho Doce</div>
+          <div class="desc">Tamanho P (1kg) atende de 5 a 7 pessoas. Tamanho G (3kg) atende até 20 pessoas.</div>
+          <span class="price-tag">P R$ 50 · G R$ 120</span>
+        </div>
+        <div class="outro-card">
+          <div class="name">Topo de Bolo</div>
+          <div class="desc">Personalizado para o tema do seu evento. Solicite mais informações sobre o modelo escolhido.</div>
+          <span class="price-tag">A partir de R$ 30</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="instrucoes">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <span class="eyebrow">Antes de encomendar</span>
+        <h2>Como funciona</h2>
+      </div>
+      <ul class="instr-list">
+        <li><span class="instr-num">1</span>Você pode escolher 1 sabor do cardápio para o seu bolo.</li>
+        <li><span class="instr-num">2</span>Encomendas devem ser feitas com no mínimo 5 dias de antecedência, mediante o pagamento de metade do valor.</li>
+        <li><span class="instr-num">3</span>O cálculo indicativo é de 100 gramas por fatia — o número de fatias pode variar de acordo com a espessura do corte.</li>
+        <li><span class="instr-num">4</span>Em caso de desistência da encomenda até 24 horas antes da retirada, não haverá devolução do valor referente ao sinal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="wrap reveal">
+      <span class="eyebrow">Fale com a gente</span>
+      <h2>Peça já o seu docinho</h2>
+      <div class="phone">(19) 3221-1277</div>
+      <div class="hero-cta">
+        <a class="btn btn-whatsapp" href="https://wa.me/551932211277" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.1 1 1-3-.2-.3C3.7 15 3.2 13.5 3.2 12c0-4.8 3.9-8.8 8.8-8.8s8.8 3.9 8.8 8.8-3.9 8.8-8.8 8.8z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+      <p class="payment">Formas de pagamento: Dinheiro · Pix · Cartão de crédito e débito</p>
+
+      <div class="contato-grid">
+        <div class="contato-card">
+          <div class="cc-title">Endereço</div>
+          <div class="cc-body">R. Helena Teodoro Ferreira, 214<br>Jardim Santa Rosa, Campinas - SP<br>13058-716</div>
+        </div>
+        <div class="contato-card">
+          <div class="cc-title">E-mail</div>
+          <div class="cc-body"><a href="mailto:sonhodoceboloscps@gmail.com">sonhodoceboloscps@gmail.com</a></div>
+        </div>
+        <div class="contato-card">
+          <div class="cc-title">Redes sociais</div>
+          <div class="cc-body">
+            <a href="https://instagram.com/sonhodocebolos" target="_blank" rel="noopener">@sonhodocebolos</a> · Instagram<br>
+            Sonho Doce Bolos E Sobremesas · Facebook
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-card">
+        <div class="cc-title" style="margin-bottom:12px;">Horário de funcionamento</div>
+        <ul class="hours-list" id="hoursList">
+          <li><span>Segunda</span><span>Fechada</span></li>
+          <li><span>Terça</span><span>10:00–18:00</span></li>
+          <li><span>Quarta</span><span>10:00–18:00</span></li>
+          <li><span>Quinta</span><span>10:00–18:00</span></li>
+          <li><span>Sexta</span><span>10:00–18:00</span></li>
+          <li><span>Sábado</span><span>10:00–18:00</span></li>
+          <li><span>Domingo</span><span>09:00–12:00</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Sonho Doce · Bolos e sobremesas — com amor, com carinho e artesanal! · R. Helena Teodoro Ferreira, 214, Jardim Santa Rosa, Campinas - SP</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.1 });
+  els.forEach(el=>io.observe(el));
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabBtns.forEach(b=>b.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Horário de funcionamento (minutos desde 00:00). null = fechada o dia todo.
+  // index: 0 = domingo ... 6 = sábado
+  const HOURS = [
+    [9*60, 12*60],         // domingo — 09:00–12:00
+    null,                  // segunda — fechada
+    [10*60, 18*60],        // terça — 10:00–18:00
+    [10*60, 18*60],        // quarta — 10:00–18:00
+    [10*60, 18*60],        // quinta — 10:00–18:00
+    [10*60, 18*60],        // sexta — 10:00–18:00
+    [10*60, 18*60],        // sábado — 10:00–18:00
+  ];
+
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function fmt(mins){ return pad(Math.floor(mins/60)) + ':' + pad(mins%60); }
+
+  function updateStatus(){
+    const now = new Date();
+    const day = now.getDay();
+    const minutesNow = now.getHours()*60 + now.getMinutes();
+    const today = HOURS[day];
+    const isOpen = today && minutesNow >= today[0] && minutesNow < today[1];
+
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+
+    if(isOpen){
+      const range = fmt(today[0]) + '–' + fmt(today[1]);
+      dot.classList.remove('closed');
+      text.textContent = 'ABERTA AGORA · ' + range;
+    } else {
+      dot.classList.add('closed');
+      text.textContent = today ? ('FECHADA AGORA · abre ' + fmt(today[0])) : 'FECHADA HOJE';
+    }
+
+    const hoursItems = document.querySelectorAll('#hoursList li');
+    hoursItems.forEach((li, i)=>{
+      // list order: Segunda, Terça, Quarta, Quinta, Sexta, Sábado, Domingo -> map to HOURS index
+      const order = [1,2,3,4,5,6,0];
+      li.classList.remove('today','closed-today');
+      if(order[i] === day){
+        li.classList.add(HOURS[day] ? 'today' : 'closed-today');
+      }
+    });
+  }
+
+  updateStatus();
+  setInterval(updateStatus, 60000);
+</script>
+
+</body>
+</html>
